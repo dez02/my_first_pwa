@@ -1,18 +1,24 @@
-console.log('hello depuis main');
-const technosDiv = document.querySelector('#todos');
+console.log("It/'s works!");
 
-let technos = [
-  {id: 1, name: 'Learn React'},
-  {id: 2, name: 'Lear Node'},
-  {id: 3, name: 'Learn MongoDB'},
-  {id: 4, name: 'Learn PWA'}
-];
+const todosDiv = document.querySelector('#todos');
 
-function loadTechnologies(technos) {
-  const allTechnos = technos
-    .map(t => `<div><b>${t.name}</b>`)
-    .join('');
-  technosDiv.innerHTML = allTechnos; 
+function loadTodos() {
+  fetch('http://localhost:3001/todos')
+    .then(response => {
+      response.json()
+        .then(todos => {
+          const allTodos = todos.map(todo => `<div><b>${todo.name}</b></div>`)
+            .join('');
+  
+          todosDiv.innerHTML = allTodos; 
+        });
+    })
+    .catch(console.error);
 }
 
-loadTechnologies(technos);
+loadTodos(todos);
+
+if(navigator.serviceWorker) {
+	navigator.serviceWorker.register('service_worker.js').catch(err => console.error);
+	
+}

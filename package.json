@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "database": "json-server -p 3001 --watch db.json",
+    "start": "live-server --port=3000"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/dez02/my_first_pwa/issues"
   },
-  "homepage": "https://github.com/dez02/my_first_pwa#readme"
+  "homepage": "https://github.com/dez02/my_first_pwa#readme",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
 }
